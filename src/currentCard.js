@@ -10,14 +10,14 @@ const styles = theme => ({
   root: {
     flexGrow: 1
   },
-  paper: {
-    width: 100
+  paperLg: {
+    width: 300
   },
   dayHeading: {
     paddingBottom: 0,
     paddingTop: 8
   },
-  forecastImage: {
+  currentImage: {
     padding: 0
   }
 });
@@ -40,23 +40,27 @@ class CurrentCard extends React.Component {
     return "http://openweathermap.org/img/w/" + icon + ".png";
   }
 
+  retrieveCurrentTemp(currentTemp) {
+    return this.retrieveTemp;
+  }
+
   render() {
     return (
       <React.Fragment>
-        <Paper className={this.props.classes.paper}>
+        <Paper className={this.props.classes.paperLg}>
           <Grid container className={this.props.classes.root}>
-            <Grid item xs={12} className={this.props.classes.dayHeading}>
+             <Grid item xs={12} className={this.props.classes.dayHeading}>
               <Typography variant="subheading" align="center">
                 {this.retrieveDayName(this.props.day)}
               </Typography>
-            </Grid>
-            <Grid item xs={12} className={this.props.classes.forecastImage}>
+            </Grid> 
+            <Grid item xs={12} className={this.props.classes.currentImage}>
               <Grid container justify="center">
                 <img
                   src={this.retrieveIconURL(this.props.icon)}
                   alt={this.props.weather}
-                  height="100"
-                  width="100"
+                  height="160"
+                  width="160"
                 />
               </Grid>
             </Grid>
@@ -72,8 +76,8 @@ class CurrentCard extends React.Component {
   }
 }
 
-ForecastCard.propTypes = {
+CurrentCard.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(ForecastCard);
+export default withStyles(styles)(CurrentCard);

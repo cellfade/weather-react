@@ -8,6 +8,7 @@
     "react": "^16.4.1",
     "react-dom": "^16.8.6",
     "react-scripts": "1.1.4",
+    "react-skycons": "^0.7.0",
     "typeface-roboto": "0.0.54"
   },
   "scripts": {

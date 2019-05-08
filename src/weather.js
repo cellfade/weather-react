@@ -5,8 +5,10 @@ import Typography from '@material-ui/core/Typography';
 import { TextField } from '../node_modules/@material-ui/core';
 import Grid from '@material-ui/core/Grid';
 import ForecastCard from './forecastCard';
+import CurrentCard from './forecastCard';
 import Button from '@material-ui/core/Button';
 import Header from './Layout/header';
+import Footer from './Layout/footer';
 import 'typeface-roboto';
 
 const styles = theme => ({
@@ -16,6 +18,10 @@ const styles = theme => ({
   paper: {
     height: 140,
     width: 100
+  },
+  paperLg: {
+    height: 140,
+    width: 300
   },
   gridRow: {
     marginTop: 50
@@ -80,21 +86,58 @@ class Weather extends React.Component {
     return (
       <React.Fragment>
       <Header></Header>
+      
        
+      <Grid container spacing={16} className={this.props.classes.root}>
         <Grid item xs={12} className={this.props.classes.gridRow}>
             <Grid container justify="center">
             <Typography variant="display1" align="center">
-          Current weather
+          Current conditions
           </Typography>
-              <TextField
+            </Grid>
+          </Grid>
+
+          <Grid item xs={12}>
+          <Grid container justify="center">
+          <Typography variant="display1" align="center">
+          for
+          </Typography>
+          </Grid>
+          </Grid>
+
+          <Grid item xs={12}>
+          <Grid container justify="center">
+          <TextField
                 label="Zip Code"
                 value={this.state.zipCode}
                 onChange={evt => this.updateZipCode(evt)}
               />
+              </Grid>
+          </Grid>
+
+          <Grid item xs={12} className={this.props.classes.gridRow}>
+            <Grid container justify="center" spacing={16}>
+              {this.state.forecasts.map(value => (
+                <Grid key={value.key} item>
+                  <CurrentCard
+                    temp={value.temp}
+                    weather={value.weather}
+                    value={value.key}
+                    icon={value.icon}
+                  />
+                </Grid>
+              ))}
             </Grid>
           </Grid>
 
-        <Grid container spacing={16} className={this.props.classes.root}>
+          <Grid item xs={12} className={this.props.classes.gridRow}>
+            <Grid container justify="center">
+            <Typography variant="display1" align="center">
+          5 Day Forecast
+          </Typography>
+            </Grid>
+          </Grid>
+
           <Grid item xs={12} className={this.props.classes.gridRow}>
             <Grid container justify="center" spacing={16}>
               {this.state.forecasts.map(value => (
@@ -131,6 +174,8 @@ class Weather extends React.Component {
             </Grid>
           </Grid>
         </Grid>
+        <Grid item xs={12} className={this.props.classes.gridRow}>
+        <Footer></Footer></Grid>
       </React.Fragment>
     );
   }
