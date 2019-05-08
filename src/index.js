@@ -1,14 +1,8 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from "react";
+import ReactDOM from "react-dom";
 
-
-import Weather from './weather';
-
-
+import Weather from "./weather";
 
 // ========================================
 
-ReactDOM.render(
-<Weather />,
-document.getElementById('root')
-);
+ReactDOM.render(<Weather />, document.getElementById("root"));
