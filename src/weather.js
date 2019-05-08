@@ -6,6 +6,8 @@ import { TextField } from '../node_modules/@material-ui/core';
 import Grid from '@material-ui/core/Grid';
 import ForecastCard from './forecastCard';
 import Button from '@material-ui/core/Button';
+import Header from './Layout/header';
+import 
 
 const styles = theme => ({
     root: {
@@ -65,6 +67,8 @@ class Weather extends React.Component {
     render() {
       return (
         <React.Fragment>
+            <Header>
+            </Header>
         <Typography variant="display4" align="center">
             Forecast
         </Typography>
