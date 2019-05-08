@@ -22,7 +22,6 @@ const styles = theme => ({
 
 
 class Weather extends React.Component {
-    // This API_KEY should be an active api key from openweathermap.org.  A free account API key should suffice.
     static API_KEY = 'cf3201d74c517875eb07870d9a089a50';
 
     constructor() {
