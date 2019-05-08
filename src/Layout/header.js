@@ -5,6 +5,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
+import 'typeface-roboto';
 
 const styles = {
   root: {
@@ -25,10 +26,10 @@ function Header(props) {
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-          <Typography variant="h6" color="inherit" className={classes.grow}>
-            News
+          <Typography variant="display6" color="inherit" className={classes.grow}>
+            My Forecast
           </Typography>
-          <Button color="inherit">Login</Button>
+          <Button color="inherit">Contact Us</Button>
         </Toolbar>
       </AppBar>
     </div>

@@ -7,7 +7,7 @@ import Grid from '@material-ui/core/Grid';
 import ForecastCard from './forecastCard';
 import Button from '@material-ui/core/Button';
 import Header from './Layout/header';
-import 
+import 'typeface-roboto';
 
 const styles = theme => ({
   root: {
@@ -34,14 +34,6 @@ class Weather extends React.Component {
         this.refreshForecast = this.refreshForecast.bind(this);
     }
 
-  constructor() {
-    super();
-    this.state = {
-      forecasts: [],
-      zipCode: "80223"
-    };
-    this.refreshForecast = this.refreshForecast.bind(this);
-  }
 
   componentDidMount() {
     this.refreshForecast();
@@ -87,7 +79,7 @@ class Weather extends React.Component {
   render() {
     return (
       <React.Fragment>
-      <header></header>
+      <Header></Header>
         <Typography variant="display4" align="center">
           Forecast
         </Typography>
