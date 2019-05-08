@@ -80,14 +80,12 @@ class Weather extends React.Component {
     return (
       <React.Fragment>
       <Header></Header>
-        <Typography variant="display5" align="center">
-          Current Weather and Forecast
-        </Typography>
-        <Typography variant="display1" align="center">
-          for
-        </Typography>
+       
         <Grid item xs={12} className={this.props.classes.gridRow}>
             <Grid container justify="center">
+            <Typography variant="display1" align="center">
+          Current weather
+          </Typography>
               <TextField
                 label="Zip Code"
                 value={this.state.zipCode}

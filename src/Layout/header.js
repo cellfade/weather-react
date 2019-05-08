@@ -26,7 +26,7 @@ function Header(props) {
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-          <Typography variant="display6" color="inherit" className={classes.grow}>
+          <Typography variant="display1" color="inherit" className={classes.grow}>
             My Forecast
           </Typography>
           <Button color="inherit">Contact Us</Button>
