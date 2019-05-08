@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
@@ -9,16 +8,6 @@ import ForecastCard from './forecastCard';
 import Button from '@material-ui/core/Button';
 import Header from './Layout/header';
 import 
-=======
-import React from "react";
-import PropTypes from "prop-types";
-import { withStyles } from "@material-ui/core/styles";
-import Typography from "@material-ui/core/Typography";
-import { TextField } from "../node_modules/@material-ui/core";
-import Grid from "@material-ui/core/Grid";
-import ForecastCard from "./forecastCard";
-import Button from "@material-ui/core/Button";
->>>>>>> bb67c0ef49809141d711911e6459e9c0a3631b3a
 
 const styles = theme => ({
   root: {
@@ -34,7 +23,6 @@ const styles = theme => ({
 });
 
 class Weather extends React.Component {
-<<<<<<< HEAD
     static API_KEY = 'cf3201d74c517875eb07870d9a089a50';
 
     constructor() {
@@ -45,9 +33,6 @@ class Weather extends React.Component {
         };
         this.refreshForecast = this.refreshForecast.bind(this);
     }
-=======
-  static API_KEY = "cf3201d74c517875eb07870d9a089a50";
->>>>>>> bb67c0ef49809141d711911e6459e9c0a3631b3a
 
   constructor() {
     super();
@@ -93,13 +78,6 @@ class Weather extends React.Component {
       });
   }
 
-<<<<<<< HEAD
-    render() {
-      return (
-        <React.Fragment>
-            <Header>
-            </Header>
-=======
   updateZipCode(evt) {
     this.setState({
       zipCode: evt.target.value
@@ -109,7 +87,7 @@ class Weather extends React.Component {
   render() {
     return (
       <React.Fragment>
->>>>>>> bb67c0ef49809141d711911e6459e9c0a3631b3a
+      <header></header>
         <Typography variant="display4" align="center">
           Forecast
         </Typography>
