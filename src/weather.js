@@ -49,8 +49,10 @@ class Weather extends React.Component {
     fetch(
       "https://api.openweathermap.org/data/2.5/forecast?zip=" +
         this.state.zipCode +
+        "&units=imperial" +
         "&appid=" +
-        Weather.API_KEY
+        Weather.API_KEY 
+        
     )
       .then(results => {
         return results.json();
