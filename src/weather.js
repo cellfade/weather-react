@@ -177,7 +177,8 @@ class Weather extends React.Component {
           </Grid>
         </Grid>
         <Grid item xs={12} className={this.props.classes.gridRow}>
-        <Footer></Footer></Grid>
+        <Footer></Footer>
+        </Grid>
       </React.Fragment>
     );
   }
