@@ -101,14 +101,6 @@ class Weather extends React.Component {
 
           <Grid item xs={12}>
           <Grid container justify="center">
-          <Typography variant="display1" align="center">
-          for
-          </Typography>
-          </Grid>
-          </Grid>
-
-          <Grid item xs={12}>
-          <Grid container justify="center">
           <TextField
                 label="Zip Code"
                 value={this.state.zipCode}
