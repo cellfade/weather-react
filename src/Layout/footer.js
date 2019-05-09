@@ -10,6 +10,9 @@ const styles = {
   root: {
     flexGrow: 1,
   },
+  grow: {
+    flexGrow: 1,
+  },
 };
 
 function Footer(props) {
@@ -17,11 +20,11 @@ function Footer(props) {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static" color="default">
+      <AppBar position="static" color="default" align="center">
         <Toolbar>
-          <Typography variant="h6" color="inherit">
-            Photos
-          </Typography>
+            <Typography variant="caption" color="inherit" className={classes.grow}>
+            Check me out on <a target="_blank" href="https://github.com/cellfade/weather-react">GitHub</a>!
+            </Typography>
         </Toolbar>
       </AppBar>
     </div>

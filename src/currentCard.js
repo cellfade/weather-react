@@ -59,8 +59,8 @@ class CurrentCard extends React.Component {
                 <img
                   src={this.retrieveIconURL(this.props.icon)}
                   alt={this.props.weather}
-                  height="160"
-                  width="160"
+                  height="100"
+                  width="100"
                 />
               </Grid>
             </Grid>
