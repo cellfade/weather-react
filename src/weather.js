@@ -90,7 +90,7 @@ class Weather extends React.Component {
       <Header></Header>
       
        
-      <Grid container spacing={16} className={this.props.classes.root}>
+      <Grid container spacing={16} className={this.props.classes.root} >
         <Grid item xs={12} className={this.props.classes.gridRow}>
             <Grid container justify="center">
             <Typography variant="display1" align="center">
@@ -99,21 +99,12 @@ class Weather extends React.Component {
             </Grid>
           </Grid>
 
-          <Grid item xs={12}>
-          <Grid container justify="center">
-          <TextField
-                label="Zip Code"
-                value={this.state.zipCode}
-                onChange={evt => this.updateZipCode(evt)}
-              />
-              </Grid>
-          </Grid>
-
           <Grid item xs={12} className={this.props.classes.gridRow}>
             <Grid container justify="center" spacing={16}>
               {this.state.forecasts.map(value => (
                 <Grid key={value.key} item>
                   <CurrentCard
+                    city={value.city}
                     temp={value.temp}
                     weather={value.weather}
                     value={value.key}
