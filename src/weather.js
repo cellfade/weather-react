@@ -40,48 +40,48 @@ class Weather extends React.Component {
         this.refreshForecast = this.refreshForecast.bind(this);
     }
 
-  componentDidMount() {
-    this.refreshCoords();
-    this.refreshForecast();
+    componentDidMount() {
+      this.refreshCoords();
+      this.refreshForecast();
+    }
+  
+   refreshCoords() {
+      let cachedLat = localStorage.getItem('latitude');
+      let cachedLon = localStorage.getItem('longitude');
+      
+      cachedLat ? 
+       this.setCoordsFromLocalStorage(cachedLat, cachedLon) :
+       this.getCoords();
   }
-
- refreshCoords() {
-    let cachedLat = localStorage.getItem(‘latitude’);
-    let cachedLon = localStorage.getItem(‘longitude’);
-    
-    cachedLat ? 
-     this.setCoordsFromLocalStorage(cachedLat, cachedLon) :
-     this.getCoords();
-}
-
-setCoordsFromLocalStorage(cachedLat, cachedLon) {
-  this.setState({
-   latitude: cachedLat,
-   longitude: cachedLon
-  });
-}
-
-getCoords() {
-  if (window.navigator.geolocation) { 
-   navigator.geolocation.getCurrentPosition((position) => {
-    localStorage.setItem(‘latitude’, position.coords.latitude);
-    localStorage.setItem(‘longitude’, position.coords.longitude);
-  }, (error) => {
-   this.setState({
-    error: error.message,
-   });
-  });
-  } 
- }
+  
+  setCoordsFromLocalStorage(cachedLat, cachedLon) {
+    this.setState({
+     latitude: cachedLat,
+     longitude: cachedLon
+    });
+  }
+  
+  getCoords() {
+    if (window.navigator.geolocation) { 
+     navigator.geolocation.getCurrentPosition((position) => {
+      localStorage.setItem('latitude', position.coords.latitude);
+      localStorage.setItem('longitude', position.coords.longitude);
+    }, (error) => {
+     this.setState({
+      error: error.message,
+     });
+    });
+    } 
+   }
 
   refreshForecast() {
-    fetch(
-      "api.openweathermap.org/data/2.5/forecast?lat="+localStorage.getItem(‘latitude’)+"&lon="+localStorage.getItem(‘longitude’)+
-        "&units=imperial" +
-        "&appid=" +
-        Weather.API_KEY 
-        
-    )
+    fetch( "https://api.openweathermap.org/data/2.5/forecast?zip=" 
+    + this.state.zipCode +
+    /*"api.openweathermap.org/data/2.5/forecast?lat="+localStorage.getItem('latitude')+"&lon="+localStorage.getItem('longitude')+
+    "&units=imperial" +*/  
+    "&appid=" +
+    Weather.API_KEY )
+            
       .then(results => {
         return results.json();
       })

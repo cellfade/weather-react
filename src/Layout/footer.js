@@ -23,7 +23,7 @@ function Footer(props) {
       <AppBar position="static" color="default" align="center">
         <Toolbar>
             <Typography variant="caption" color="inherit" className={classes.grow}>
-            Check me out on <a target="_blank" href="https://github.com/cellfade/weather-react">GitHub</a>!
+            Check me out on <a target="_blank" rel="noopener noreferrer" href="https://github.com/cellfade/weather-react">GitHub</a>!
             </Typography>
         </Toolbar>
       </AppBar>
