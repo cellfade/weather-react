@@ -34,15 +34,19 @@ class Weather extends React.Component {
     constructor() {
         super();
         this.state = {
+            currentWeather: "",
             forecasts: [],
-            zipCode: '80223'
+            latitude:"39",
+            longitude:"104"
         };
         this.refreshForecast = this.refreshForecast.bind(this);
+        this.refreshCurrentWeather = this.refreshCurrentWeather.bind(this);
     }
 
     componentDidMount() {
       this.refreshCoords();
       this.refreshForecast();
+      this.refreshCurrentWeather();
     }
   
    refreshCoords() {
@@ -64,8 +68,14 @@ class Weather extends React.Component {
   getCoords() {
     if (window.navigator.geolocation) { 
      navigator.geolocation.getCurrentPosition((position) => {
+       console.log(position.coords.latitude);
+       console.log(position.coords.latitude);
       localStorage.setItem('latitude', position.coords.latitude);
       localStorage.setItem('longitude', position.coords.longitude);
+      this.setState({
+        latitude: position.coords.latitude,
+        longitude: position.coords.longitude
+       });
     }, (error) => {
      this.setState({
       error: error.message,
@@ -75,13 +85,10 @@ class Weather extends React.Component {
    }
 
   refreshForecast() {
-    fetch( "https://api.openweathermap.org/data/2.5/forecast?zip=" 
-    + this.state.zipCode +
-    /*"api.openweathermap.org/data/2.5/forecast?lat="+localStorage.getItem('latitude')+"&lon="+localStorage.getItem('longitude')+
-    "&units=imperial" +*/  
+    fetch( "https://api.openweathermap.org/data/2.5/forecast?lat="+this.state.latitude+"&lon="+this.state.longitude+
+    "&units=imperial" +  
     "&appid=" +
-    Weather.API_KEY )
-            
+    Weather.API_KEY )         
       .then(results => {
         return results.json();
       })
@@ -103,6 +110,21 @@ class Weather extends React.Component {
           forecasts.push(dailyForecast);
         });
         this.setState({ forecasts: forecasts });
+      });
+  }
+
+  refreshCurrentWeather() {
+    // fetch( "https://api.openweathermap.org/data/2.5/forecast?zip=" 
+    // + this.state.zipCode +
+    fetch("https://api.openweathermap.org/data/2.5/weather?lat="+this.state.latitude+"&lon="+this.state.longitude+
+    "&units=imperial" +  
+    "&appid=" +
+    Weather.API_KEY)     
+      .then(results => {
+        return results.json();
+      })
+      .then(data => {
+        this.setState({ currentWeather: data });
       });
   }
 
@@ -129,18 +151,14 @@ class Weather extends React.Component {
 
           <Grid item xs={12} className={this.props.classes.gridRow}>
             <Grid container justify="center" spacing={16}>
-              {this.state.forecasts.map(value => (
-                <Grid key={value.key} item>
                   <CurrentCard
-                    city={value.city}
-                    temp={value.temp}
-                    weather={value.weather}
-                    value={value.key}
-                    icon={value.icon}
+                    city={this.state.currentWeather.name}
+                    temp={this.state.currentWeather.temp}
+                    weather={this.state.currentWeather.weather}
+                    value={this.state.currentWeather.key}
+                    icon={this.state.currentWeather.icon}
                   />
                 </Grid>
-              ))}
-            </Grid>
           </Grid>
 
           <Grid item xs={12} className={this.props.classes.gridRow}>
@@ -168,7 +186,7 @@ class Weather extends React.Component {
           <Grid item xs={12} className={this.props.classes.gridRow}>
             <Grid container justify="center">
               <TextField
-                label="Zip Code"
+                label="City"
                 value={this.state.zipCode}
                 onChange={evt => this.updateZipCode(evt)}
               />
