@@ -34,10 +34,16 @@ class Weather extends React.Component {
     constructor() {
         super();
         this.state = {
-            currentWeather: "",
+            currentWeather: {
+              weather: {},
+              currentData:{
+                main:{
+                }
+              }
+            },
             forecasts: [],
-            latitude:"39",
-            longitude:"104"
+            latitude:"39.7392",
+            longitude:"-104.9903"
         };
         this.refreshForecast = this.refreshForecast.bind(this);
         this.refreshCurrentWeather = this.refreshCurrentWeather.bind(this);
@@ -124,7 +130,14 @@ class Weather extends React.Component {
         return results.json();
       })
       .then(data => {
-        this.setState({ currentWeather: data });
+        let weather = data.weather[0];
+        let current = {
+          weather: weather,
+          currentData: data
+        };
+        this.setState({ 
+            currentWeather: current
+         });
       });
   }
 
@@ -152,11 +165,10 @@ class Weather extends React.Component {
           <Grid item xs={12} className={this.props.classes.gridRow}>
             <Grid container justify="center" spacing={16}>
                   <CurrentCard
-                    city={this.state.currentWeather.name}
-                    temp={this.state.currentWeather.temp}
-                    weather={this.state.currentWeather.weather}
-                    value={this.state.currentWeather.key}
-                    icon={this.state.currentWeather.icon}
+                     temp={this.state.currentWeather.currentData.main.temp}
+                     weather={this.state.currentWeather.weather.main}
+                     icon={this.state.currentWeather.weather.icon}
+
                   />
                 </Grid>
           </Grid>

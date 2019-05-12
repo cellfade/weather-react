@@ -23,25 +23,9 @@ const styles = theme => ({
 });
 
 class CurrentCard extends React.Component {
-  retrieveDayName(dayNumber) {
-    let dayArray = [
-      "Sunday",
-      "Monday",
-      "Tuesday",
-      "Wednesday",
-      "Thursday",
-      "Friday",
-      "Saturday"
-    ];
-    return dayArray[dayNumber];
-  }
 
   retrieveIconURL(icon) {
     return "http://openweathermap.org/img/w/" + icon + ".png";
-  }
-
-  retrieveCurrentTemp(currentTemp) {
-    return this.retrieveTemp;
   }
 
   render() {
@@ -51,14 +35,14 @@ class CurrentCard extends React.Component {
           <Grid container className={this.props.classes.root}>
              <Grid item xs={12} className={this.props.classes.dayHeading}>
               <Typography variant="subheading" align="center">
-                {this.retrieveDayName(this.props.day)}
+                Current Conditions
               </Typography>
             </Grid> 
             <Grid item xs={12} className={this.props.classes.currentImage}>
               <Grid container justify="center">
-                <img
+              <img
                   src={this.retrieveIconURL(this.props.icon)}
-                  alt={this.props.weather}
+                  alt={this.props.icon}
                   height="100"
                   width="100"
                 />
@@ -66,7 +50,7 @@ class CurrentCard extends React.Component {
             </Grid>
             <Grid item xs={12}>
               <Typography variant="subheading" align="center">
-                {this.props.weather}
+                 {this.props.weather}
               </Typography>
             </Grid>
           </Grid>

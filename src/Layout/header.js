@@ -20,7 +20,7 @@ function Header(props) {
   
   return (
     <div className={classes.root}>
-      <AppBar position="static" align="center">
+      <AppBar position="static" color="primary" align="center">
         <Toolbar>
           <Typography variant="display1" color="inherit" className={classes.grow}>
             My Forecast

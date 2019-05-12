@@ -63,6 +63,7 @@ class ForecastCard extends React.Component {
             <Grid item xs={12}>
               <Typography variant="subheading" align="center">
                 {this.props.weather}
+                {this.props.temp}
               </Typography>
             </Grid>
           </Grid>
