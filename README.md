@@ -1,5 +1,7 @@
+https://cellfade.github.io/weather-react/
+
 # Weather React
-This is a sample real-time and 5 day weather forecast web application built using React to view the weather forecast.
+This is a real-time and 5 day weather forecast app that helps you plan for your week.
 This is my first React SPA! Huzzah!
 
 # Prerequsites
