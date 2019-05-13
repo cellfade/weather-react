@@ -205,7 +205,7 @@ class Weather extends React.Component {
             {" "}
             {this.state.location
               ? ""
-              : "Please allow the browser to share your location or search by city."}{" "}
+              : "Wait for load, allow the browser to share your location or search by city."}{" "}
           </Typography>
           </Grid>
           <Grid item xs={12} className={this.props.classes.gridRow}>
@@ -215,7 +215,6 @@ class Weather extends React.Component {
               </Typography>
             </Grid>
           </Grid>
-
           <Grid item xs={12} className={this.props.classes.gridRow}>
             <Grid container justify="center" spacing={16}>
               <CurrentCard
