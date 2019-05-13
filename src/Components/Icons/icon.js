@@ -1,6 +1,8 @@
 import React from 'react';
 import Skycons from 'react-skycons'
 
+
+
 const RenderIcons = ({ icon }) => {
     if (!icon) {
         return (<p>Loading...</p>);
@@ -33,7 +35,7 @@ const RenderIcons = ({ icon }) => {
 
     return(
     <Skycons 
-        color='lightblue' 
+        color="lightblue"
         icon={type} 
         autoplay={true}
       />);

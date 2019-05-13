@@ -210,7 +210,7 @@ class Weather extends React.Component {
           </Grid>
           <Grid item xs={12} className={this.props.classes.gridRow}>
             <Grid container justify="center">
-              <Typography variant="display1" align="center">
+              <Typography variant="display2" align="center">
                 Current conditions
               </Typography>
             </Grid>
@@ -221,6 +221,7 @@ class Weather extends React.Component {
                 temp={this.state.currentWeather.currentData.main.temp}
                 weather={this.state.currentWeather.weather.main}
                 icon={this.state.currentWeather.weather.icon}
+                city={this.state.currentWeather.currentData.name}
               />
             </Grid>
           </Grid>
@@ -246,7 +247,11 @@ class Weather extends React.Component {
                 </Grid>
               ))}
             </Grid>
-          </Grid>
+          </Grid><Grid container justify="center">
+              <Typography variant="subheading" align="center">
+                Forecast for 6:00 AM MST / 12:00 GMT
+              </Typography>
+            </Grid>
           <Grid item xs={12}>
             <Grid container justify="center"
               className={this.props.classes.gridRow}

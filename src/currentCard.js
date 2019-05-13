@@ -38,23 +38,28 @@ class CurrentCard extends React.Component {
       <React.Fragment>
         <Paper className={this.props.classes.paperLg}>
           <Grid container className={this.props.classes.root}>
-             
-          <Grid item xs={12}>
-              <Typography className={this.props.classes.textmargin} variant="title" align="center">
-                 {this.props.weather}
-              </Typography>
-            </Grid>
-              
             <Grid item xs={12} className={this.props.classes.currentImage}>
               <Grid container justify="center">
-              <RenderIcons icon={this.props.icon}/>
+              <RenderIcons className={this.props.classes.textmargin} icon={this.props.icon}/>
               </Grid>
             </Grid>
             <Grid item xs={12}>
-              <Typography className={this.props.classes.textmargin} variant="title" align="center">
+              <Typography className={this.props.classes.textmargin} variant="headline" align="center">
+                 {this.props.weather}
+              </Typography>
+            </Grid>
+            <Grid item xs={12}>
+              <Typography className={this.props.classes.textmargin} variant="display1" align="center">
                {this.formatTemp(this.props.temp)} &deg; F
               </Typography>
             </Grid>
+            
+            <Grid item xs={12}>
+              <Typography className={this.props.classes.textmargin} variant="headline" align="center" color="primary">
+                 {this.props.city}
+              </Typography>
+            </Grid>
+            
           </Grid>
         </Paper>
       </React.Fragment>
