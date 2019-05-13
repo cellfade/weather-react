@@ -32,7 +32,7 @@ const styles = theme => ({
 });
 
 class Weather extends React.Component {
-  static API_KEY = "cf3201d74c517875eb07870d9a089a50";
+  static API_KEY = process.env.REACT_APP_openweather_api_key;
 
   constructor() {
     super();
