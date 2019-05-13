@@ -2,6 +2,7 @@
 
 # Current and 5 Day Weather Conditions App in React
 
+# Live Site
 https://cellfade.github.io/weather-react/
 
 This is a real-time and 5 day weather forecast app that helps you plan for your week.
@@ -17,20 +18,24 @@ This is my first React SPA! Huzzah!
 3. `npm start` will serve the application on localhost:3000# weather-react
 
 # Next Steps for Features, Additions and Technical Debt
-1. `Add city name title heading` that is pulled from users location and place above the currentCard.
-2. `App breaks after too many API requests` because of limit on free accounts for OpenWeather current and forecast calls.
-3. Skycons replacement of OpenWeather API icons selection may not be complete and can `potentially produce errors`.
-4. `Add comments` to better explain operation of the app.
-5. `remove deprecated variants` This weather app has some deprecated typography headings from Material-ui. e.g. Display4 will have to become H4.
-6. Edit styles to be more complete and aligned within a `customized color palette`.
-7. `Skeleton loading UI` instead on initial load.
-8. `Properly cache` geoLoacation in localStorage.
-9. `Include Highs and Lows` on currentCard.
-10. Finish `editing paperLG in curretnCard` and weather.js to new height size above 140px.
-11. Add `return/enter button to search for new city` (just onClick currently).
-12. `Remove debug code` and handle errors appropriately.
-13. Wind conditions, humidity and `more detailed info on currentCard` and forecastCard.
-14. `More debugging and unit tests` required to insure quality of app.
+1. `Improve UI`, add background image of city based on coords and pulled from Unslpash or other free photo servcie.
+2. `Add more days to the forecast` and create a carousel to rotate thru the longer forecast.
+3. `Add animations and possibly react-tilt` to forecastCards/currentCard to create a more interactive experience.
+4. `Add buttons and share link` to forecastCards/currentCard.  
+5. `Add city name title heading` that is pulled from users location and place above the currentCard.
+6. `App breaks after too many API requests` because of limit on free accounts for OpenWeather current and forecast calls.
+7. Skycons replacement of OpenWeather API icons selection may not be complete and can `potentially produce errors`.
+8. `Add comments` to better explain operation of the app.
+9. `remove deprecated variants` This weather app has some deprecated typography headings from Material-ui. e.g. Display4 will have to become H4.
+10. Edit styles to be more complete and aligned within a `customized color palette`.
+11. `Skeleton loading UI` instead on initial load.
+12. `Properly cache` geoLoacation in localStorage.
+13. `Include Highs and Lows` on currentCard.
+14. Finish `editing paperLG in curretnCard` and weather.js to new height size above 140px.
+15. Add `return/enter button to search for new city` (just onClick currently).
+16. `Remove debug code` and handle errors appropriately.
+17. Wind conditions, humidity and `more detailed info on currentCard` and forecastCard.
+18. `More debugging and unit tests` required to insure quality of app.
 
 # Thought Process
 1. Make a weather app that can give me the 5 day forecast for the week so I can plan when to bike/walk to work during good weather.
