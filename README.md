@@ -2,11 +2,10 @@
 
 # Current and 5 Day Weather Conditions App in React
 
-# Live Site
-https://cellfade.github.io/weather-react/
-
 This is a real-time and 5 day weather forecast app that helps you plan for your week.
 This is my first React SPA! Huzzah!
+
+https://cellfade.github.io/weather-react/
 
 # Prerequsites
 * npm 
