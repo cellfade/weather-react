@@ -13,12 +13,11 @@ const styles = theme => ({
   paperLg: {
     width: 280
   },
-  title: {
-    paddingBottom: 0,
-    paddingTop: 8
-  },
   currentImage: {
     padding: 0
+  },
+  textmargin: {
+    padding: 8
   }
 });
 
@@ -40,7 +39,7 @@ class CurrentCard extends React.Component {
           <Grid container className={this.props.classes.root}>
              
           <Grid item xs={12}>
-              <Typography variant="title" align="center">
+              <Typography className={this.props.classes.textmargin} variant="title" align="center">
                  {this.props.weather}
               </Typography>
             </Grid>
@@ -56,7 +55,7 @@ class CurrentCard extends React.Component {
               </Grid>
             </Grid>
             <Grid item xs={12}>
-              <Typography variant="title" align="center">
+              <Typography className={this.props.classes.textmargin} variant="title" align="center">
                {this.formatTemp(this.props.temp)} &deg; F
               </Typography>
             </Grid>
