@@ -5,6 +5,7 @@ import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import 'typeface-roboto';
+import RenderIcons from "./Components/Icons/icon";
 
 const styles = theme => ({
   root: {
@@ -46,12 +47,7 @@ class CurrentCard extends React.Component {
               
             <Grid item xs={12} className={this.props.classes.currentImage}>
               <Grid container justify="center">
-              <img
-                  src={this.retrieveIconURL(this.props.icon)}
-                  alt={this.props.icon}
-                  height="100"
-                  width="100"
-                />
+              <RenderIcons icon={this.props.icon}/>
               </Grid>
             </Grid>
             <Grid item xs={12}>

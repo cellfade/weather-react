@@ -47,7 +47,7 @@ class Weather extends React.Component {
       latitude: "39.7392",
       longitude: "-104.9903",
       location: false,
-      city: "denver",
+      city: "",
       useCity: false,
       loaded: false
     };
@@ -151,7 +151,7 @@ class Weather extends React.Component {
     });
   }
 
-  fetchByCity(evt) {
+  fetchByCity() {
     this.setState({
       useCity:true
     })
