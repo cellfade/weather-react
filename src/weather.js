@@ -5,7 +5,7 @@ import Typography from '@material-ui/core/Typography';
 import { TextField } from '../node_modules/@material-ui/core';
 import Grid from '@material-ui/core/Grid';
 import ForecastCard from './forecastCard';
-import CurrentCard from './forecastCard';
+import CurrentCard from './currentCard';
 import Button from '@material-ui/core/Button';
 import Header from './Layout/header';
 import Footer from './Layout/footer';
@@ -20,8 +20,8 @@ const styles = theme => ({
     width: 100
   },
   paperLg: {
-    height: 140,
-    width: 300
+    height: 280,
+    width: 280
   },
   gridRow: {
     marginTop: 50
@@ -111,7 +111,8 @@ class Weather extends React.Component {
             key: index,
             day: day,
             weather: currentElementWeather.main,
-            icon: currentElementWeather.icon
+            icon: currentElementWeather.icon,
+            temp: parseInt(element.main.temp, 10)
           };
           forecasts.push(dailyForecast);
         });
@@ -172,9 +173,26 @@ class Weather extends React.Component {
                   />
                 </Grid>
           </Grid>
+          <Grid item xs={12}>
+            <Grid container justify="center" className={this.props.classes.gridRow}>
+              <Button
+                variant="contained"
+                color="primary"
+                className={this.props.classes.button}
+                onClick={this.refreshForecast}
+              >
+                Refresh my Location
+              </Button>
+            </Grid>
+            <Grid container justify="center" >
+              <Typography variant="subheading" align="center">
+          or search by city below!
+              </Typography>
+            </Grid>
+          </Grid>
 
           <Grid item xs={12} className={this.props.classes.gridRow}>
-            <Grid container justify="center">
+            <Grid container justify="center" >
             <Typography variant="display1" align="center">
           5 Day Forecast
           </Typography>
@@ -190,6 +208,7 @@ class Weather extends React.Component {
                     weather={value.weather}
                     value={value.key}
                     icon={value.icon}
+                    temp={value.temp}
                   />
                 </Grid>
               ))}
@@ -208,11 +227,11 @@ class Weather extends React.Component {
             <Grid container justify="center">
               <Button
                 variant="contained"
-                color="primary"
+                color="secondary"
                 className={this.props.classes.button}
                 onClick={this.refreshForecast}
               >
-                Refresh
+                Search by City
               </Button>
             </Grid>
           </Grid>

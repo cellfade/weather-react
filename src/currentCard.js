@@ -11,9 +11,9 @@ const styles = theme => ({
     flexGrow: 1
   },
   paperLg: {
-    width: 300
+    width: 280
   },
-  dayHeading: {
+  title: {
     paddingBottom: 0,
     paddingTop: 8
   },
@@ -28,16 +28,23 @@ class CurrentCard extends React.Component {
     return "http://openweathermap.org/img/w/" + icon + ".png";
   }
 
+  formatTemp(temp)
+  {
+    return parseInt(temp, 10);
+  }
+
   render() {
     return (
       <React.Fragment>
         <Paper className={this.props.classes.paperLg}>
           <Grid container className={this.props.classes.root}>
-             <Grid item xs={12} className={this.props.classes.dayHeading}>
-              <Typography variant="subheading" align="center">
-                Current Conditions
+             
+          <Grid item xs={12}>
+              <Typography variant="title" align="center">
+                 {this.props.weather}
               </Typography>
-            </Grid> 
+            </Grid>
+              
             <Grid item xs={12} className={this.props.classes.currentImage}>
               <Grid container justify="center">
               <img
@@ -49,8 +56,8 @@ class CurrentCard extends React.Component {
               </Grid>
             </Grid>
             <Grid item xs={12}>
-              <Typography variant="subheading" align="center">
-                 {this.props.weather}
+              <Typography variant="title" align="center">
+               {this.formatTemp(this.props.temp)} &deg; F
               </Typography>
             </Grid>
           </Grid>
