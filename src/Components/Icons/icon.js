@@ -35,7 +35,7 @@ const RenderIcons = ({ icon }) => {
 
     return(
     <Skycons 
-        color="lightblue"
+        color="orange"
         icon={type} 
         autoplay={true}
       />);
