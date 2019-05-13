@@ -225,28 +225,6 @@ class Weather extends React.Component {
               />
             </Grid>
           </Grid>
-          <Grid item xs={12}>
-            <Grid
-              container
-              justify="center"
-              className={this.props.classes.gridRow}
-            >
-              <Button
-                variant="contained"
-                color="primary"
-                className={this.props.classes.button}
-                onClick={this.refreshCoords}
-              >
-                Refresh my Location
-              </Button>
-            </Grid>
-            <Grid container justify="center">
-              <Typography variant="subheading" align="center">
-                or search by city below!
-              </Typography>
-            </Grid>
-          </Grid>
-
           <Grid item xs={12} className={this.props.classes.gridRow}>
             <Grid container justify="center">
               <Typography variant="display1" align="center">
@@ -268,6 +246,25 @@ class Weather extends React.Component {
                   />
                 </Grid>
               ))}
+            </Grid>
+          </Grid>
+          <Grid item xs={12}>
+            <Grid container justify="center"
+              className={this.props.classes.gridRow}
+            >
+              <Button
+                variant="contained"
+                color="primary"
+                className={this.props.classes.button}
+                onClick={this.refreshCoords}
+              >
+                Refresh my Location
+              </Button>
+            </Grid>
+            <Grid container justify="center">
+              <Typography variant="subheading" align="center">
+                or search by city below!
+              </Typography>
             </Grid>
           </Grid>
           <Grid item xs={12} className={this.props.classes.gridRow}>

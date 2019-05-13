@@ -19,6 +19,7 @@ This is my first React SPA! Huzzah!
 5. Properly cache geoLoacation in localStorage
 6. Include Highs and Lows on currentCard
 7. Include Highs and Lows on forecastCards
+8. Add return/enter button to search for new city (just onClick currently)
 
 # TODOs
 1. Maybe include high and lows on larger currentCard
