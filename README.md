@@ -14,16 +14,17 @@ This is my first React SPA! Huzzah!
 3. `npm start` will serve the application on localhost:3000# weather-react
 
 # Next Steps for Features/Additions
-1. `remove deprecated variants` This weather app has some deprecated typography headings from Material-ui. e.g. Display4 will have to become H4.
-2. Edit styles to be more complete and aligned within a `customized color palette`.
-3. `Skeleton loading UI` instead on initial load.
-4. `Properly cache` geoLoacation in localStorage.
-5. `Include Highs and Lows` on currentCard.
-6. Include Highs and Lows on forecastCards.
-7. Add `return/enter button to search for new city` (just onClick currently).
-8. `Remove debug code` and handle errors appropriately.
-9. Wind conditions, humidity and `more detailed info on currentCard`.
-10. `More debugging and unit tests` required to insure quality of app.
+1. `Add comments` to better explain operation of the app.
+2. `remove deprecated variants` This weather app has some deprecated typography headings from Material-ui. e.g. Display4 will have to become H4.
+3. Edit styles to be more complete and aligned within a `customized color palette`.
+4. `Skeleton loading UI` instead on initial load.
+5. `Properly cache` geoLoacation in localStorage.
+6. `Include Highs and Lows` on currentCard.
+7. Include Highs and Lows on forecastCards.
+8. Add `return/enter button to search for new city` (just onClick currently).
+9. `Remove debug code` and handle errors appropriately.
+10. Wind conditions, humidity and `more detailed info on currentCard` and forecastCard.
+11. `More debugging and unit tests` required to insure quality of app.
 
 # Thought Process
 1. Make a weather app that can give me the 5 day forecast for the week so I can plan when to bike/walk to work during good weather.
