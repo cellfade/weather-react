@@ -25,7 +25,10 @@ const styles = theme => ({
   },
   gridRow: {
     marginTop: 50
-  }
+  },
+  textmargin: {
+   padding: 8
+}
 });
 
 class Weather extends React.Component {
@@ -197,12 +200,14 @@ class Weather extends React.Component {
       <React.Fragment>
         <Header />
         <Grid container spacing={16} className={this.props.classes.root}>
-          <Typography>
+          <Grid container justify="center">
+            <Typography className={this.props.classes.textmargin}>
             {" "}
             {this.state.location
               ? ""
               : "Please allow the browser to share your location or search by city."}{" "}
           </Typography>
+          </Grid>
           <Grid item xs={12} className={this.props.classes.gridRow}>
             <Grid container justify="center">
               <Typography variant="display1" align="center">
