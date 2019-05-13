@@ -13,7 +13,12 @@ This is my first React SPA! Huzzah!
 
 # Next Steps
 1. `remove deprecated variants` This weather app has some deprecated typography headings from Material-ui. e.g. Display4 will have to become H4.
-2. Edit styles to be more complete and aligned within a customized color palette
+2. Edit styles to be more complete and aligned within a customized color palette.
+3. Add loading message for when the app is fetching current lcoation.
+4. Skeleton loading UI instead of default coordinates for initial load.
+5. Properly cache geoLoacation in localStorage
+6. Include Highs and Lows on currentCard
+7. Include Highs and Lows on forecastCards
 
 # TODOs
 1. Maybe include high and lows on larger currentCard

@@ -1,15 +1,15 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
-import { TextField } from '../node_modules/@material-ui/core';
-import Grid from '@material-ui/core/Grid';
-import ForecastCard from './forecastCard';
-import CurrentCard from './currentCard';
-import Button from '@material-ui/core/Button';
-import Header from './Layout/header';
-import Footer from './Layout/footer';
-import 'typeface-roboto';
+import React from "react";
+import PropTypes from "prop-types";
+import { withStyles } from "@material-ui/core/styles";
+import Typography from "@material-ui/core/Typography";
+import { TextField } from "../node_modules/@material-ui/core";
+import Grid from "@material-ui/core/Grid";
+import ForecastCard from "./forecastCard";
+import CurrentCard from "./currentCard";
+import Button from "@material-ui/core/Button";
+import Header from "./Layout/header";
+import Footer from "./Layout/footer";
+import "typeface-roboto";
 
 const styles = theme => ({
   root: {
@@ -29,72 +29,94 @@ const styles = theme => ({
 });
 
 class Weather extends React.Component {
-    static API_KEY = 'cf3201d74c517875eb07870d9a089a50';
+  static API_KEY = "cf3201d74c517875eb07870d9a089a50";
 
-    constructor() {
-        super();
-        this.state = {
-            currentWeather: {
-              weather: {},
-              currentData:{
-                main:{
-                }
-              }
-            },
-            forecasts: [],
-            latitude:"39.7392",
-            longitude:"-104.9903"
-        };
-        this.refreshForecast = this.refreshForecast.bind(this);
-        this.refreshCurrentWeather = this.refreshCurrentWeather.bind(this);
-    }
-
-    componentDidMount() {
-      this.refreshCoords();
-      this.refreshForecast();
-      this.refreshCurrentWeather();
-    }
-  
-   refreshCoords() {
-      let cachedLat = localStorage.getItem('latitude');
-      let cachedLon = localStorage.getItem('longitude');
-      
-      cachedLat ? 
-       this.setCoordsFromLocalStorage(cachedLat, cachedLon) :
-       this.getCoords();
+  constructor() {
+    super();
+    this.state = {
+      currentWeather: {
+        weather: {},
+        currentData: {
+          main: {}
+        }
+      },
+      forecasts: [],
+      latitude: "39.7392",
+      longitude: "-104.9903",
+      location: false,
+      city: "denver",
+      useCity: false,
+      loaded: false
+    };
+    this.refreshForecast = this.refreshForecast.bind(this);
+    this.refreshCurrentWeather = this.refreshCurrentWeather.bind(this);
+    this.getCoords = this.getCoords.bind(this);
+    this.setCity = this.setCity.bind(this);
+    this.refreshCoords = this.refreshCoords.bind(this);
+    this.fetchByCity = this.fetchByCity.bind(this);
   }
-  
+
+  componentDidMount() {
+    this.refreshCoords();
+  }
+
+  refreshCoords() {
+    this.setState({
+      useCity: false
+    });
+    this.getCoords();
+    this.refreshForecast();
+    this.refreshCurrentWeather();
+  }
+
   setCoordsFromLocalStorage(cachedLat, cachedLon) {
     this.setState({
-     latitude: cachedLat,
-     longitude: cachedLon
+      latitude: cachedLat,
+      longitude: cachedLon
     });
   }
-  
+
   getCoords() {
-    if (window.navigator.geolocation) { 
-     navigator.geolocation.getCurrentPosition((position) => {
-       console.log(position.coords.latitude);
-       console.log(position.coords.latitude);
-      localStorage.setItem('latitude', position.coords.latitude);
-      localStorage.setItem('longitude', position.coords.longitude);
-      this.setState({
-        latitude: position.coords.latitude,
-        longitude: position.coords.longitude
-       });
-    }, (error) => {
-     this.setState({
-      error: error.message,
-     });
-    });
-    } 
-   }
+    if (window.navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        position => {
+          this.setState({
+            latitude: position.coords.latitude,
+            longitude: position.coords.longitude,
+            location: true
+          });
+          this.refreshForecast();
+          this.refreshCurrentWeather();
+        },
+        error => {
+          this.setState({
+            error: error.message
+          });
+        }
+      );
+    }
+  }
 
   refreshForecast() {
-    fetch( "https://api.openweathermap.org/data/2.5/forecast?lat="+this.state.latitude+"&lon="+this.state.longitude+
-    "&units=imperial" +  
-    "&appid=" +
-    Weather.API_KEY )         
+    let url;
+    if (this.state.useCity) {
+      url =
+        "https://api.openweathermap.org/data/2.5/forecast?q=" +
+        this.state.city +
+        "&units=imperial" +
+        "&appid=" +
+        Weather.API_KEY;
+    } else {
+      url =
+        "https://api.openweathermap.org/data/2.5/forecast?lat=" +
+        this.state.latitude +
+        "&lon=" +
+        this.state.longitude +
+        "&units=imperial" +
+        "&appid=" +
+        Weather.API_KEY;
+    }
+    fetch(url)
       .then(results => {
         return results.json();
       })
@@ -116,17 +138,44 @@ class Weather extends React.Component {
           };
           forecasts.push(dailyForecast);
         });
-        this.setState({ forecasts: forecasts });
+        this.setState({ forecasts: forecasts, loaded: true });
       });
   }
 
+  setCity(evt) {
+    this.setState({
+      city: evt.target.value
+    });
+  }
+
+  fetchByCity(evt) {
+    this.setState({
+      useCity:true
+    })
+    this.refreshCurrentWeather();
+    this.refreshForecast();
+  }
+
   refreshCurrentWeather() {
-    // fetch( "https://api.openweathermap.org/data/2.5/forecast?zip=" 
-    // + this.state.zipCode +
-    fetch("https://api.openweathermap.org/data/2.5/weather?lat="+this.state.latitude+"&lon="+this.state.longitude+
-    "&units=imperial" +  
-    "&appid=" +
-    Weather.API_KEY)     
+    let url;
+    if (this.state.useCity) {
+      url =
+        "https://api.openweathermap.org/data/2.5/weather?q=" +
+        this.state.city +
+        "&units=imperial" +
+        "&appid=" +
+        Weather.API_KEY;
+    } else {
+      url =
+        "https://api.openweathermap.org/data/2.5/weather?lat=" +
+        this.state.latitude +
+        "&lon=" +
+        this.state.longitude +
+        "&units=imperial" +
+        "&appid=" +
+        Weather.API_KEY;
+    }
+    fetch(url)
       .then(results => {
         return results.json();
       })
@@ -136,66 +185,68 @@ class Weather extends React.Component {
           weather: weather,
           currentData: data
         };
-        this.setState({ 
-            currentWeather: current
-         });
+        this.setState({
+          currentWeather: current,
+          loaded: true
+        });
       });
-  }
-
-  updateZipCode(evt) {
-    this.setState({
-      zipCode: evt.target.value
-    });
   }
 
   render() {
     return (
       <React.Fragment>
-      <Header></Header>
-      
-       
-      <Grid container spacing={16} className={this.props.classes.root} >
-        <Grid item xs={12} className={this.props.classes.gridRow}>
-            <Grid container justify="center">
-            <Typography variant="display1" align="center">
-          Current conditions
+        <Header />
+        <Grid container spacing={16} className={this.props.classes.root}>
+          <Typography>
+            {" "}
+            {this.state.location
+              ? ""
+              : "Please allow the browser to share your location or search by city."}{" "}
           </Typography>
-            </Grid>
-          </Grid>
-
           <Grid item xs={12} className={this.props.classes.gridRow}>
-            <Grid container justify="center" spacing={16}>
-                  <CurrentCard
-                     temp={this.state.currentWeather.currentData.main.temp}
-                     weather={this.state.currentWeather.weather.main}
-                     icon={this.state.currentWeather.weather.icon}
-
-                  />
-                </Grid>
-          </Grid>
-          <Grid item xs={12}>
-            <Grid container justify="center" className={this.props.classes.gridRow}>
-              <Button
-                variant="contained"
-                color="primary"
-                className={this.props.classes.button}
-                onClick={this.refreshForecast}
-              >
-                Refresh my Location
-              </Button>
-            </Grid>
-            <Grid container justify="center" >
-              <Typography variant="subheading" align="center">
-          or search by city below!
+            <Grid container justify="center">
+              <Typography variant="display1" align="center">
+                Current conditions
               </Typography>
             </Grid>
           </Grid>
 
           <Grid item xs={12} className={this.props.classes.gridRow}>
-            <Grid container justify="center" >
-            <Typography variant="display1" align="center">
-          5 Day Forecast
-          </Typography>
+            <Grid container justify="center" spacing={16}>
+              <CurrentCard
+                temp={this.state.currentWeather.currentData.main.temp}
+                weather={this.state.currentWeather.weather.main}
+                icon={this.state.currentWeather.weather.icon}
+              />
+            </Grid>
+          </Grid>
+          <Grid item xs={12}>
+            <Grid
+              container
+              justify="center"
+              className={this.props.classes.gridRow}
+            >
+              <Button
+                variant="contained"
+                color="primary"
+                className={this.props.classes.button}
+                onClick={this.refreshCoords}
+              >
+                Refresh my Location
+              </Button>
+            </Grid>
+            <Grid container justify="center">
+              <Typography variant="subheading" align="center">
+                or search by city below!
+              </Typography>
+            </Grid>
+          </Grid>
+
+          <Grid item xs={12} className={this.props.classes.gridRow}>
+            <Grid container justify="center">
+              <Typography variant="display1" align="center">
+                5 Day Forecast
+              </Typography>
             </Grid>
           </Grid>
 
@@ -218,8 +269,8 @@ class Weather extends React.Component {
             <Grid container justify="center">
               <TextField
                 label="City"
-                value={this.state.zipCode}
-                onChange={evt => this.updateZipCode(evt)}
+                value={this.state.city}
+                onChange={evt => this.setCity(evt)}
               />
             </Grid>
           </Grid>
@@ -229,7 +280,7 @@ class Weather extends React.Component {
                 variant="contained"
                 color="secondary"
                 className={this.props.classes.button}
-                onClick={this.refreshForecast}
+                onClick={this.fetchByCity}
               >
                 Search by City
               </Button>
@@ -237,7 +288,7 @@ class Weather extends React.Component {
           </Grid>
         </Grid>
         <Grid item xs={12} className={this.props.classes.gridRow}>
-        <Footer></Footer>
+          <Footer />
         </Grid>
       </React.Fragment>
     );
