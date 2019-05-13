@@ -1,5 +1,5 @@
 # Weather React
-This is a sample real-time and 5 day weather forecast web application built using react to view the weather forecast.
+This is a sample real-time and 5 day weather forecast web application built using React to view the weather forecast.
 This is my first React SPA! Huzzah!
 
 # Prerequsites
@@ -11,20 +11,25 @@ This is my first React SPA! Huzzah!
 2. `npm run build` to build the react application into the build folder
 3. `npm start` will serve the application on localhost:3000# weather-react
 
-# Next Steps
+# Next Steps for Features/Additions
 1. `remove deprecated variants` This weather app has some deprecated typography headings from Material-ui. e.g. Display4 will have to become H4.
-2. Edit styles to be more complete and aligned within a customized color palette.
-3. Add loading message for when the app is fetching current lcoation.
-4. Skeleton loading UI instead of default coordinates for initial load.
-5. Properly cache geoLoacation in localStorage
-6. Include Highs and Lows on currentCard
-7. Include Highs and Lows on forecastCards
-8. Add return/enter button to search for new city (just onClick currently)
+2. Edit styles to be more complete and aligned within a `customized color palette`.
+3. `Skeleton loading UI` instead on initial load.
+4. `Properly cache` geoLoacation in localStorage.
+5. `Include Highs and Lows` on currentCard.
+6. Include Highs and Lows on forecastCards.
+7. Add `return/enter button to search for new city` (just onClick currently).
+8. `Remove debug code` and handle errors appropriately.
+9. Wind conditions, humidity and `more detailed info on currentCard`.
+10. `More debugging and unit tests` required to insure quality of app.
 
-# TODOs
-1. Maybe include high and lows on larger currentCard
-2. Change icons to Skycons animated icons and have them play the animation
-    1. Possible inclusion of Github branch to include colored versions.
-3. Push to new Github repo under my andrewmiller.co@gmail.com account (need to create)
-4. Write the README.md documentation I need to for the project.
-5. Host the code somewhere.
+# Thought Process
+1. Make a weather app that can give me the 5 day forecast for the week so I can plan when to bike/walk to work during good weather.
+2. Include real-time weather so I can make a decision to walk/bike instead of taking the car or a ride share to a destination.
+3. Make it easy to search for a city’s current and 5 day weather forecast for travel purposes.
+4. Make it pretty with Material-Ui.
+5. Include empathetic language and tone to connect with the user.
+
+# Trade Offs
+1. I choose to use a different icon set than OpenWeather Api and that introduced some difficulties implementing the solution.
+2. Instead of static HTML page with JavaScript, I decided to challenge myself and use React to implement the solution. This decision increased the time required to create the App, but I now feel confident I can learn the coding languages required of me in a short amount of time.
