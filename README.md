@@ -1,6 +1,6 @@
 
 
-# Current and 5 Day Conditions Weather App in React
+# Current and 5 Day Weather Conditions App in React
 
 https://cellfade.github.io/weather-react/
 
