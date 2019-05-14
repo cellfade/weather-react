@@ -21,7 +21,7 @@ const RenderIcons = ({ icon }) => {
     } else if(icon === '03d' || icon=== '03n') {
       type = "CLOUDY"
     } else if(icon === '10d' || icon=== '10n' || icon==='09d' || icon==='09n') {
-      type = "RAINY"
+      type = "RAIN"
     } else if(icon === 'sleet') {
       type = "SLEET"
     } else if(icon === '13d' || icon=== '13n') {

@@ -40,7 +40,7 @@ class ForecastCard extends React.Component {
   retrieveIconURL(icon) {
     return "http://openweathermap.org/img/w/" + icon + ".png";
   }
-
+ 
   render() {
     return (
       <React.Fragment>

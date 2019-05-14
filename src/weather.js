@@ -104,17 +104,17 @@ class Weather extends React.Component {
     let url;
     if (this.state.useCity) {
       url =
-        "https://api.openweathermap.org/data/2.5/forecast?q=" +
-        this.state.city +
-        "&units=imperial" +
-        "&appid=" +
-        Weather.API_KEY;
+      "https://api.openweathermap.org/data/2.5/forecast?q=" +
+      encodeURIComponent(this.state.city) +
+      "&units=imperial" +
+      "&appid=" +
+      Weather.API_KEY;
     } else {
       url =
         "https://api.openweathermap.org/data/2.5/forecast?lat=" +
-        this.state.latitude +
+        encodeURIComponent(this.state.latitude) +
         "&lon=" +
-        this.state.longitude +
+        encodeURIComponent(this.state.longitude) +
         "&units=imperial" +
         "&appid=" +
         Weather.API_KEY;
@@ -158,6 +158,16 @@ class Weather extends React.Component {
     this.refreshCurrentWeather();
     this.refreshForecast();
   }
+//Update currentCard with city name that is fetched
+  fetchByCity() {
+    this.setState({
+      useCity:true}, function () 
+      {
+
+    this.refreshCurrentWeather();
+    this.refreshForecast();
+  });    
+}
 
   refreshCurrentWeather() {
     let url;
@@ -192,7 +202,10 @@ class Weather extends React.Component {
           currentWeather: current,
           loaded: true
         });
+        
+        
       });
+      
   }
 
   render() {
@@ -287,6 +300,7 @@ class Weather extends React.Component {
                 color="secondary"
                 className={this.props.classes.button}
                 onClick={this.fetchByCity}
+                
               >
                 Search by City
               </Button>
