@@ -12,7 +12,7 @@ const styles = theme => ({
     flexGrow: 1
   },
   paperLg: {
-    width: 280
+    width: 300
   },
   currentImage: {
     padding: 0
@@ -40,7 +40,7 @@ class CurrentCard extends React.Component {
           <Grid container className={this.props.classes.root}>
             <Grid item xs={12} className={this.props.classes.currentImage}>
               <Grid container justify="center">
-              <RenderIcons className={this.props.classes.textmargin} icon={this.props.icon}/>
+              <RenderIcons icon={this.props.icon}/>
               </Grid>
             </Grid>
             <Grid item xs={12}>

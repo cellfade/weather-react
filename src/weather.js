@@ -16,12 +16,12 @@ const styles = theme => ({
     flexGrow: 1
   },
   paper: {
-    height: 140,
+    height: 180,
     width: 100
   },
   paperLg: {
-    height: 280,
-    width: 280
+    height: 300,
+    width: 220
   },
   gridRow: {
     marginTop: 50
@@ -151,13 +151,6 @@ class Weather extends React.Component {
     });
   }
 
-  fetchByCity() {
-    this.setState({
-      useCity:true
-    })
-    this.refreshCurrentWeather();
-    this.refreshForecast();
-  }
 //Update currentCard with city name that is fetched
   fetchByCity() {
     this.setState({
@@ -168,7 +161,6 @@ class Weather extends React.Component {
     this.refreshForecast();
   });    
 }
-
   refreshCurrentWeather() {
     let url;
     if (this.state.useCity) {

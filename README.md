@@ -33,6 +33,8 @@ https://cellfade.github.io/weather-react/
 14. `Remove debug code` and handle errors appropriately.
 15. Wind conditions, humidity and `more detailed info on currentCard` and forecastCard.
 16. `More debugging and unit tests` required to insure quality of app.
+17. `Create more error messages` for loading states.
+18. Fix `day heading not rendering in Safari` (macOS & mobile) on forecastCards.
 
 # Thought Process
 1. Make a weather app that can give me the 5 day forecast for the week so I can plan when to bike/walk to work during good weather.
